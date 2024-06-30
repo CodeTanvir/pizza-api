@@ -65,7 +65,7 @@ mongoose.connect(`mongodb+srv://${_name}:${_password}@${_cluster}.mongodb.net/pi
             }
         });
 
-  app.put('/order/:id', async(req, res)=>{
+  app.patch('/order/:id', async(req, res)=>{
             const orderId = req.params.id;
             try{
                 const updatePriority = await pizzaOrder.findOneAndUpdate(
