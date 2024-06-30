@@ -81,6 +81,6 @@ mongoose.connect(`mongodb+srv://${_name}:${_password}@${_cluster}.mongodb.net/pi
 
 
 
-app.listen(3000, ()=>{
+app.listen(process.env.PORT, ()=>{
     console.log(`Server is Running 3000`)
 })
