@@ -34,6 +34,9 @@ const pizzaOrderSchema = new mongoose.Schema({
    address:{
       type:String
    },
+   position:{
+      type:String
+   },
    orderPrice:{
       type:Number,
       required:true
