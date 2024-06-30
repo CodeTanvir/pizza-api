@@ -65,21 +65,6 @@ mongoose.connect(`mongodb+srv://${_name}:${_password}@${_cluster}.mongodb.net/pi
             }
         });
 
-app.put('/order/:id', async (req, res) => {
-  const orderId = req.params.id;
-  try {
-    const updatedOrder = await PizzaOrder.findOneAndUpdate(
-      { orderId },
-      req.body,
-      { priority: true }
-    );
-    if (!updatedOrder) return res.status(404).send('Order not found');
-    res.status(200).send(updatedOrder);
-  } catch (err) {
-    res.status(500).send(err);
-  }
-});
-
 
 
 
