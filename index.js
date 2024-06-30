@@ -38,6 +38,7 @@ mongoose.connect(`mongodb+srv://${_name}:${_password}@${_cluster}.mongodb.net/pi
                 customer:req.body.customer,
                 phone:req.body.phone,
                 address:req.body.address,
+                position:req.body.position,
                 cart:req.body.cart,
                 priority:req.body.priority,
                 orderPrice:req.body.totalCartPrice,
