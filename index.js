@@ -83,6 +83,45 @@ mongoose.connect(`mongodb+srv://${_name}:${_password}@${_cluster}.mongodb.net/pi
         })
 
 
+        async function updateOrderStatus() {
+            const orders = await pizzaOrder.find({ status: { $ne: "Delivered" } });
+            const now = new Date();
+        
+            orders.forEach(async (order) => {
+                const timeElapsed = now - order.orderTime;
+                const timeLeft = order.estimatedDelivery - now;
+                const totalDeliveryTime = order.estimatedDelivery - order.orderTime;
+                const percentageLeft = (timeLeft / totalDeliveryTime) * 100;
+        
+                if (percentageLeft <= 5) {
+                    order.status = "arrived";
+                } else if(percentageLeft <= 0){
+                    order.status = "Delivered"
+                }
+                else if (percentageLeft <= 25) {
+                    order.status = "close to your location";
+                } else if (percentageLeft <= 40) {
+                    order.status = "on the way";
+                } else if (percentageLeft <= 45) {
+                    order.status = "handover to delivery partner";
+                } else if (percentageLeft <= 48) {
+                    order.status = "order packed";
+                } else if (percentageLeft <= 40) {
+                    order.status = "order prepared";
+                } else if (percentageLeft <= 95){
+                    order.status = "preapearing order"
+                }
+                else {
+                    order.status = "order placed"; // Default status
+                }
+        
+                // Update the order status in the database
+                await order.save();
+            });
+        }
+        
+        // Schedule the status update function to run every minute
+        cron.schedule('* * * * *', updateOrderStatus);
 
 app.listen(process.env.PORT, ()=>{
     console.log(`Server is Running 3000`)
