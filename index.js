@@ -45,14 +45,15 @@ mongoose.connect(`mongodb+srv://${_name}:${_password}@${_cluster}.mongodb.net/pi
                 priorityPrice:req.body.PriorityPrice,
                 totalPrice:req.body.totalPrice,
                 orderId, 
-                orderTime:new Date.now(),
-                estimatedDelivery: Date.now() + (req.body.cart.length > 0 ? 1000*60*10* req.body.cart.length : 0), 
+                 orderTime: new Date(),
+                estimatedDelivery: new Date(Date.now() + 
+                (req.body.cart.length > 0 ? 1000 * 60 * 10 * req.body.cart.length : 0)),    
             });
             const saved = await Order.save();
             console.log(saved)
             res.status(200).send(saved)
            }catch(err){
-            res.send(err)
+            res.status(500).send(err)
            }
         })
         app.get('/order/:id',async (req, res)=>{
