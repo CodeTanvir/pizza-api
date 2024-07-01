@@ -110,7 +110,7 @@ mongoose.connect(`mongodb+srv://${_name}:${_password}@${_cluster}.mongodb.net/pi
                 } else if (percentageLeft <= 40) {
                     order.status = "order prepared";
                 } else if (percentageLeft <= 95){
-                    order.status = "preapearing order"
+                    order.status = "prepearing order"
                 }
                 else {
                     order.status = "order placed"; // Default status
