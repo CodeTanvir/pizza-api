@@ -21,11 +21,10 @@ const pizzaOrderSchema = new mongoose.Schema({
    },
    orderTime:{
       type:Date,
-      default:Date.now()
+      required:true
    },
    estimatedDelivery:{
     type:Date,
-    default: Date.now() + 1000*60*30,
     required:true
    },
    phone:{
