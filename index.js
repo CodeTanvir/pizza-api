@@ -44,6 +44,8 @@ mongoose.connect(`mongodb+srv://${_name}:${_password}@${_cluster}.mongodb.net/pi
                 orderPrice:req.body.totalCartPrice,
                 priorityPrice:req.body.PriorityPrice,
                 totalPrice:req.body.totalPrice,
+                orderTime:new Date.now(),
+                estimatedDelivery: Date.now() + (req.body.cart.length > 0 ? 1000*60*10* req.body.cart.length : 0),
                 orderId,    
             });
             const saved = await Order.save();
