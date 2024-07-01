@@ -10,7 +10,7 @@ const cron = require('node-cron');
 const app = express();
 app.use(express.json());
 app.use(cors({
-  origin: 'https://fast-react-pizza-b6tfe1z9c-tanvir-hossains-projects-daa04054.vercel.app',
+  origin: ['https://fast-react-pizza-b6tfe1z9c-tanvir-hossains-projects-daa04054.vercel.app','https://fast-react-pizza-co-three.vercel.app'],
   methods: ['GET', 'POST','PATCH','PUT'],
   allowedHeaders: ['Content-Type', 'Authorization'],
   optionsSuccessStatus: 200 
