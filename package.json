@@ -13,6 +13,7 @@
   "dependencies": {
     "cors": "^2.8.5",
     "dotenv": "^16.4.5",
+     "node-cron": "^3.0.3",
     "express": "^4.19.2",
     "mongoose": "^8.4.4",
     "unique-id-mix": "^1.0.0"
