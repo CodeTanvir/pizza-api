@@ -22,7 +22,7 @@ const _password = process.env.password
 const _cluster = process.env.cluster;
 
 
-mongoose.connect(`mongodb+srv://${_name}:${_password}@${_cluster}.mongodb.net/pizza`,{
+mongoose.connect(`mongodb+srv://${_name}:${_password}@${_cluster}.mongodb.net/`,{
     useNewUrlParser: true,
     useUnifiedTopology: true
 })
